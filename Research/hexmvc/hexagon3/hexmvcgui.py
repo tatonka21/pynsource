@@ -1,7 +1,7 @@
 import wx
 from hexmvcgui_gen import HexMvcGuiFrame1
 import _thread, time
-import random
+import secrets
 
 
 class MyFrame(HexMvcGuiFrame1):
@@ -55,7 +55,7 @@ class MyFrame(HexMvcGuiFrame1):
         self.app.New()
 
     def AddThing(self, event):
-        thing = self.app.CreateThing(str(random.randint(0, 99999)))
+        thing = self.app.CreateThing(str(secrets.SystemRandom().randint(0, 99999)))
         self.m_listBox1.Append(str(thing), thing)
 
     def DeleteThing(self, event):

@@ -4,9 +4,9 @@ import wx
 import wx.lib.ogl as ogl
 import time
 import _thread
-import random
 
 import sys
+import secrets
 
 sys.path.append("../../src/")
 from view.graph import *
@@ -190,18 +190,18 @@ class GraphRendererOgl:
             canvas.Refresh(False)  # Need this or else Control points ('handles') leave blank holes
 
     def InsertNewNode(self):
-        id = "D" + str(random.randint(1, 99))
+        id = "D" + str(secrets.SystemRandom().randint(1, 99))
         dialog = wx.TextEntryDialog(None, "Enter an id string:", "Create a new node", id)
         if dialog.ShowModal() == wx.ID_OK:
             id = dialog.GetValue()
             if self.graph.FindNodeById(id):
-                id += str(random.randint(1, 9999))
+                id += str(secrets.SystemRandom().randint(1, 9999))
             node = GraphNode(
                 id,
-                random.randint(0, 100),
-                random.randint(0, 100),
-                random.randint(60, 160),
-                random.randint(60, 160),
+                secrets.SystemRandom().randint(0, 100),
+                secrets.SystemRandom().randint(0, 100),
+                secrets.SystemRandom().randint(60, 160),
+                secrets.SystemRandom().randint(60, 160),
             )
             node = self.graph.AddNode(node)
             self.createNodeShape(node)

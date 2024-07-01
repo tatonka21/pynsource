@@ -3,6 +3,7 @@ Attempt to sketch the whole hexmvc thing out simply.
 """
 
 import sys
+import secrets
 
 sys.path.append("../lib")
 sys.path.append("../hexagon3")
@@ -131,7 +132,6 @@ import wx
 import wx.lib.mixins.inspection  # Ctrl-Alt-I
 from hexmvcgui_gen import HexMvcGuiFrame1
 import _thread, time
-import random
 
 
 class IGui(HexAdapter):
@@ -159,7 +159,7 @@ class MyFrame(HexMvcGuiFrame1, IGui, IModelDependencies):
     # Gui Generated Events, override the handler here
 
     def AddThing(self, event):
-        info = str(random.randint(0, 99999))
+        info = str(secrets.SystemRandom().randint(0, 99999))
         thing = self.app.AddThing(info)
         # self.m_listBox1.Append(str(thing), thing) # notification now does this.
 

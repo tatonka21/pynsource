@@ -1,8 +1,8 @@
 from .base_cmd import CmdBase
 import wx
 import os
-import random
 from common.uml_colours import official2
+import secrets
 
 
 class CmdColourSiblings(CmdBase):
@@ -88,7 +88,7 @@ class CmdColourSequential(CmdBase):
         umlcanvas = self.context.umlcanvas
 
         if self.color_range_offset:
-            offset = random.randint(1, 10)
+            offset = secrets.SystemRandom().randint(1, 10)
         else:
             offset = 0
 

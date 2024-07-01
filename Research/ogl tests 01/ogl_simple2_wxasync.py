@@ -12,10 +12,11 @@ failed to repro cos
 
 import wx
 import wx.lib.ogl as ogl
-import random
 
 # sys.path.append("../../src/gui")
 from gui.repair_ogl import repairOGL
+import secrets
+
 repairOGL()
 
 ASYNC = True
@@ -130,8 +131,8 @@ class AppFrame(wx.Frame):
 
     def OnXXX(self, event):
         for shape in self.diagram.GetShapeList():
-            x = random.randint(0,500)
-            y = random.randint(0,500)
+            x = secrets.SystemRandom().randint(0,500)
+            y = secrets.SystemRandom().randint(0,500)
             setpos(shape, x, y)
         self.canvas.Draw()
         self.canvas.Refresh()
