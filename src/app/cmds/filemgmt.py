@@ -10,6 +10,8 @@ from gui.uml_lines import LineShape, LineShapeUml
 from textwrap import dedent
 import logging
 from common.logger import config_log
+import secrets
+
 if PRO_EDITION:
     from gui.uml_canvas import DividedShapeOglTwo as DividedShape
 else:
@@ -586,8 +588,6 @@ class CmdFileLoadWorkspaceSample1(CmdFileLoadWorkspaceBase):
         self.filepath = "(Sample %s)" % k
         s = b64decode(sample_files_dict[k]).decode("utf-8")
         self.load_model_from_text_and_build_shapes(s)
-
-import random
 class CmdInsertSimple(CmdFileLoadWorkspaceBase):
     """ Insert new node """
 
@@ -600,7 +600,7 @@ class CmdInsertSimple(CmdFileLoadWorkspaceBase):
         # self.umlcanvas.CmdInsertNewNode()
 
         result, id, attrs, methods = True, \
-                                     "D" + str(random.randint(1, 99)),\
+                                     "D" + str(secrets.SystemRandom().randint(1, 99)),\
                                      ["attribute 1", "attribute 2", "attribute 3"], \
                                      ["method A", "method B", "method C", "method D"]
 

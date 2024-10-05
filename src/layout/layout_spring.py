@@ -5,8 +5,8 @@
 #    https://gist.github.com/heckj/324039 - javascript version
 
 from view.graph import Graph, GraphNode
-import random
 import math
+import secrets
 
 
 class GraphLayoutSpring:
@@ -129,8 +129,8 @@ class GraphLayoutSpring:
         dy = node2.layoutPosY - node1.layoutPosY
         d2 = dx * dx + dy * dy
         if d2 < 0.01:
-            dx = 0.1 * random.randint(0, 1000) / 1000.0 + 0.1
-            dy = 0.1 * random.randint(0, 1000) / 1000.0 + 0.1
+            dx = 0.1 * secrets.SystemRandom().randint(0, 1000) / 1000.0 + 0.1
+            dy = 0.1 * secrets.SystemRandom().randint(0, 1000) / 1000.0 + 0.1
             d2 = dx * dx + dy * dy
         d = math.sqrt(d2)
         if d < self.maxRepulsiveForceDistance:
@@ -148,8 +148,8 @@ class GraphLayoutSpring:
         dy = node2.layoutPosY - node1.layoutPosY
         d2 = dx * dx + dy * dy
         if d2 < 0.01:
-            dx = 0.1 * random.randint(0, 1000) / 1000.0 + 0.1
-            dy = 0.1 * random.randint(0, 1000) / 1000.0 + 0.1
+            dx = 0.1 * secrets.SystemRandom().randint(0, 1000) / 1000.0 + 0.1
+            dy = 0.1 * secrets.SystemRandom().randint(0, 1000) / 1000.0 + 0.1
             d2 = dx * dx + dy * dy
         d = math.sqrt(d2)
         if d > self.maxRepulsiveForceDistance:

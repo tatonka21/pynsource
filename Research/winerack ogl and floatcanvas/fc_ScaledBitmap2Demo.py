@@ -9,13 +9,13 @@ wxPython mailing list asked for that...
 
 
 """
+import secrets
 
 ## Set a path to an Image file here:
 ImageFile = "Moo.jpg"
 
 
 import wx
-import random
 
 ## import the installed version
 from wx.lib.floatcanvas import NavCanvas, FloatCanvas
@@ -62,8 +62,8 @@ class DrawFrame(wx.Frame):
         self.timer.Start(20)
 
     def AddPoint(self, evt=None):
-        x = random.randint(0, self.width)
-        y = random.randint(0, self.height)
+        x = secrets.SystemRandom().randint(0, self.width)
+        y = secrets.SystemRandom().randint(0, self.height)
         self.Canvas.AddPoint((x, -y), Diameter=8)  # minus y, because floatcanvas uses y-up
         self.Canvas.Draw()
         wx.GetApp().Yield(onlyIfNeeded=True)

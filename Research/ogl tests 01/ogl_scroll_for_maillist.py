@@ -7,8 +7,8 @@ Sent to https://groups.google.com/forum/?hl=en&fromgroups#!searchin/wxpython-use
 
 import wx
 import wx.lib.ogl as ogl
-import random
 import time
+import secrets
 
 
 class MyShapeCanvas(ogl.ShapeCanvas):
@@ -74,7 +74,7 @@ class MainApp(wx.App):
 
         # VERSION 1:  This draws and refreshes the entire virtual area correctly
         #             But its not as smooth.
-        shape.Move(dc, random.randint(40, 400), shape.GetY())
+        shape.Move(dc, secrets.SystemRandom().randint(40, 400), shape.GetY())
         canvas.Refresh()
 
         # VERSION 2:  This does not. This only updates the top part

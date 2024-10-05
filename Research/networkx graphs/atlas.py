@@ -3,6 +3,8 @@
 Atlas of all graphs of 6 nodes or less.
 
 """
+import secrets
+
 __author__ = """Aric Hagberg (hagberg@lanl.gov)"""
 #    Copyright (C) 2004 by
 #    Aric Hagberg <hagberg@lanl.gov>
@@ -16,7 +18,6 @@ import networkx as nx
 # from networkx import *
 # from networkx.generators.atlas import *
 from networkx.algorithms.isomorphism.isomorph import graph_could_be_isomorphic as isomorphic
-import random
 
 
 def atlas6():
@@ -77,6 +78,6 @@ if __name__ == "__main__":
     # color nodes the same in each connected subgraph
     C = nx.connected_component_subgraphs(G)
     for g in C:
-        c = [random.random()] * nx.number_of_nodes(g)  # random color...
+        c = [secrets.SystemRandom().random()] * nx.number_of_nodes(g)  # random color...
         nx.draw(g, pos, node_size=40, node_color=c, vmin=0.0, vmax=1.0, with_labels=False)
     plt.savefig("atlas.png", dpi=75)
