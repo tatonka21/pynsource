@@ -19,7 +19,7 @@ class Persistence:
         model.Clear()
 
         # read model container, with all important next id allocator
-        label, id = output.readline().strip().split("=")
+        label, id = output.readline(5_000_000).strip().split("=")
         model.next_id = int(id)
 
         for line in output.readlines():
