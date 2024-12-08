@@ -18,7 +18,7 @@ from textwrap import dedent
 
 releaseUrl = "https://github.com/abulka/pynsource/releases/tag/version-1.77"
 
-response = requests.get(releaseUrl)
+response = requests.get(releaseUrl, timeout=60)
 assert response.status_code == 200
 
 html_doc = response.text
