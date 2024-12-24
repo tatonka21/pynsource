@@ -1,12 +1,12 @@
-import requests                      # Listing 1
 from urllib.parse import urlencode
+from security import safe_requests
 
 def find_definition(word):
     q = 'define ' + word
     url = 'http://api.duckduckgo.com/?'
     url += urlencode({'q': q, 'format': 'json'})
     print(url)
-    response = requests.get(url)     # I/O
+    response = safe_requests.get(url)     # I/O
     print(response.status_code)
     data = response.json()           # I/O
     print(data)

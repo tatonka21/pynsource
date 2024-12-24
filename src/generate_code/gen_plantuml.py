@@ -12,6 +12,7 @@ import asyncio
 from async_lru import alru_cache
 import aiohttp
 from generate_code.plantuml_html_scan import extract_image_url
+from security import safe_requests
 
 log = logging.getLogger(__name__)
 config_log(log)
@@ -204,7 +205,7 @@ def plant_uml_create_png_and_return_image_url(plant_uml_txt):
         # response = requests.post(plant_uml_server, data={'text': plant_uml_txt})
 
         url = os.path.join(plant_uml_server, deflate_and_encode(plant_uml_txt))
-        response = requests.get(url)
+        response = safe_requests.get(url)
 
     except (ConnectionError, requests.exceptions.RequestException) as e:
         # log.exception("Trying to render using plantuml server %s str(e)" % plant_uml_server)
@@ -247,7 +248,7 @@ def plant_uml_create_png(plant_uml_txt, output_filename):
         """
         Now fetch the image
         """
-        response = requests.get(image_url)
+        response = safe_requests.get(image_url)
         if response.status_code == 200:
             with open(output_filename, "wb") as fp:
                 fp.write(response.content)
