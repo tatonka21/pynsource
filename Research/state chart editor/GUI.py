@@ -7,8 +7,7 @@ import tkinter.messagebox
 import os
 import string  # for EditTransitionDialog
 from State import State
-
-import random
+import secrets
 
 
 class Workspace:
@@ -897,7 +896,7 @@ class GUI:
     def Andy02(self):
         for i in range(1, 20):
             self.handler.link.stateAdder._addState(
-                random.randint(100, 220), 100 + random.randint(100, 220), parent=None
+                secrets.SystemRandom().randint(100, 220), 100 + secrets.SystemRandom().randint(100, 220), parent=None
             )
             print(i)
 

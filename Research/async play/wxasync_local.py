@@ -12,7 +12,8 @@ from collections import defaultdict
 import platform
 from asyncio.locks import Event
 from asyncio.coroutines import iscoroutinefunction
-import random, sys
+import sys
+import secrets
 
 print("wxasync local")
 
@@ -47,7 +48,7 @@ class WxAsyncApp(wx.App):
                 # self.DeletePendingEvents()  # experiment
                 self.ProcessPendingEvents()
                 evtloop.ProcessIdle()
-                print(random.randint(0, 100), end=' ')
+                print(secrets.SystemRandom().randint(0, 100), end=' ')
                 sys.stdout.flush()
 
     def ExitMainLoop(self):

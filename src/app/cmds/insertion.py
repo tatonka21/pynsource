@@ -1,11 +1,11 @@
 from .base_cmd import CmdBase
 import wx
-import random
 from dialogs.DialogComment import DialogComment
 from dialogs.DialogUmlNodeEdit import DialogUmlNodeEdit
 from typing import List, Set, Dict, Tuple, Optional
 import copy
 from gui.settings import PRO_EDITION
+import secrets
 
 
 """
@@ -76,7 +76,7 @@ class CmdInsertUmlClass(UtilCmdUmlClass):
         # self.umlcanvas.CmdInsertNewNode()
 
         result, id, attrs, methods = self.display_dialog(
-            id="D" + str(random.randint(1, 99)),
+            id="D" + str(secrets.SystemRandom().randint(1, 99)),
             attrs=["attribute 1", "attribute 2", "attribute 3"],
             methods=["method A", "method B", "method C", "method D"],
         )
@@ -175,7 +175,7 @@ class CmdInsertComment(UtilCmdComment):
         Pops up a comment dialog box, creates both a graph node and a shape, and associates them
         """
 
-        id = "C" + str(random.randint(1, 9999))
+        id = "C" + str(secrets.SystemRandom().randint(1, 9999))
         result, comment = self.display_dialog(comment="initial comment")
         if result:
             # Ensure unique name
@@ -289,7 +289,7 @@ class CmdDuplicate(UtilCmdUmlClass):
                     found = True
                     break
             if not found:
-                id = node.id + "_copy" + str(random.randint(1, 99999))
+                id = node.id + "_copy" + str(secrets.SystemRandom().randint(1, 99999))
             # Ensure unique name
             while displaymodel.graph.FindNodeById(id):
                 id += "2"
@@ -319,8 +319,8 @@ class CmdDuplicate(UtilCmdUmlClass):
 
     def adjust_node_position_slightly(self, node, new_node):
         """Position the new shape slightly below the old one, but the same size"""
-        offsetx = random.randint(2, 20)
-        offsety = random.randint(-int(node.height/3), int(node.height/3))
+        offsetx = secrets.SystemRandom().randint(2, 20)
+        offsety = secrets.SystemRandom().randint(-int(node.height/3), int(node.height/3))
         new_node.left = node.left + node.width + offsetx
         new_node.top = node.top + offsety
         new_node.width = node.width
