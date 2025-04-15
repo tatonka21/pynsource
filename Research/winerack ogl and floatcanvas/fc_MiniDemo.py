@@ -11,6 +11,7 @@ import wx
 from wx.lib.floatcanvas import NavCanvas, FloatCanvas
 
 import wx.lib.colourdb
+import secrets
 
 
 class DrawFrame(wx.Frame):
@@ -104,7 +105,6 @@ class DrawFrame(wx.Frame):
 
     def DrawTest(self, event):
         wx.GetApp().Yield()
-        import random
         import numpy.random as RandomArray
 
         Range = (-10, 10)
@@ -120,29 +120,29 @@ class DrawFrame(wx.Frame):
 
         # Rectangles
         for i in range(5):
-            xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-            lw = random.randint(1, 5)
-            cf = random.randint(0, len(self.colors) - 1)
-            h = random.randint(1, 5)
-            w = random.randint(1, 5)
+            xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+            lw = secrets.SystemRandom().randint(1, 5)
+            cf = secrets.SystemRandom().randint(0, len(self.colors) - 1)
+            h = secrets.SystemRandom().randint(1, 5)
+            w = secrets.SystemRandom().randint(1, 5)
             Canvas.AddRectangle(xy, (h, w), LineWidth=lw, FillColor=self.colors[cf])
 
             # Ellipses
         for i in range(5):
-            xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-            lw = random.randint(1, 5)
-            cf = random.randint(0, len(self.colors) - 1)
-            h = random.randint(1, 5)
-            w = random.randint(1, 5)
+            xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+            lw = secrets.SystemRandom().randint(1, 5)
+            cf = secrets.SystemRandom().randint(0, len(self.colors) - 1)
+            h = secrets.SystemRandom().randint(1, 5)
+            w = secrets.SystemRandom().randint(1, 5)
             Canvas.AddEllipse(xy, (h, w), LineWidth=lw, FillColor=self.colors[cf])
 
         # Circles
         for i in range(5):
-            point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-            D = random.randint(1, 5)
-            lw = random.randint(1, 5)
-            cf = random.randint(0, len(self.colors) - 1)
-            cl = random.randint(0, len(self.colors) - 1)
+            point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+            D = secrets.SystemRandom().randint(1, 5)
+            lw = secrets.SystemRandom().randint(1, 5)
+            cf = secrets.SystemRandom().randint(0, len(self.colors) - 1)
+            cl = secrets.SystemRandom().randint(0, len(self.colors) - 1)
             Canvas.AddCircle(
                 point, D, LineWidth=lw, LineColor=self.colors[cl], FillColor=self.colors[cf]
             )
@@ -151,23 +151,23 @@ class DrawFrame(wx.Frame):
             # Lines
         for i in range(5):
             points = []
-            for j in range(random.randint(2, 10)):
-                point = (random.randint(Range[0], Range[1]), random.randint(Range[0], Range[1]))
+            for j in range(secrets.SystemRandom().randint(2, 10)):
+                point = (secrets.SystemRandom().randint(Range[0], Range[1]), secrets.SystemRandom().randint(Range[0], Range[1]))
                 points.append(point)
-            lw = random.randint(1, 10)
-            cf = random.randint(0, len(self.colors) - 1)
-            cl = random.randint(0, len(self.colors) - 1)
+            lw = secrets.SystemRandom().randint(1, 10)
+            cf = secrets.SystemRandom().randint(0, len(self.colors) - 1)
+            cl = secrets.SystemRandom().randint(0, len(self.colors) - 1)
             Canvas.AddLine(points, LineWidth=lw, LineColor=self.colors[cl])
 
             # Polygons
         for i in range(3):
             points = []
-            for j in range(random.randint(2, 6)):
-                point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+            for j in range(secrets.SystemRandom().randint(2, 6)):
+                point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                 points.append(point)
-            lw = random.randint(1, 6)
-            cf = random.randint(0, len(self.colors) - 1)
-            cl = random.randint(0, len(self.colors) - 1)
+            lw = secrets.SystemRandom().randint(1, 6)
+            cf = secrets.SystemRandom().randint(0, len(self.colors) - 1)
+            cl = secrets.SystemRandom().randint(0, len(self.colors) - 1)
             Canvas.AddPolygon(
                 points,
                 LineWidth=lw,

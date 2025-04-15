@@ -2,11 +2,11 @@
 
 import wx
 import wx.lib.ogl as ogl
-import random
+import secrets
 
 
 def get_new_xy(shape):
-    x = random.randint(1, 600)
+    x = secrets.SystemRandom().randint(1, 600)
     y = shape.GetY()
     width, height = shape.GetBoundingBoxMax()
     x += width / 2
@@ -27,7 +27,7 @@ def process_key(keycode, frame, canvas, shapes):
 
     if keycode == "m":
 
-        shape = shapes[random.randint(0, len(shapes) - 1)]
+        shape = shapes[secrets.SystemRandom().randint(0, len(shapes) - 1)]
 
         """
             prepareDc is related to scrolling and will adjust coords to take into account

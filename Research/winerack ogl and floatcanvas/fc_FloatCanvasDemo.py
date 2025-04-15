@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import secrets
+
 try:
     import numpy as N
     import numpy.random as RandomArray
@@ -24,7 +26,7 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
     except ImportError:  # if it's not there locally, try the wxPython lib.
         from wx.lib.floatcanvas import NavCanvas, FloatCanvas, Resources
     import wx.lib.colourdb
-    import time, random
+    import time
 
     class DrawFrame(wx.Frame):
 
@@ -310,42 +312,42 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
 
             # Rectangles
             for i in range(3):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                lw = random.randint(1, 5)
-                cf = random.randint(0, len(colors) - 1)
-                wh = (random.randint(1, 5), random.randint(1, 5))
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                lw = secrets.SystemRandom().randint(1, 5)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                wh = (secrets.SystemRandom().randint(1, 5), secrets.SystemRandom().randint(1, 5))
                 Canvas.AddRectangle(xy, wh, LineWidth=lw, FillColor=colors[cf])
 
             # Ellipses
             for i in range(3):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                lw = random.randint(1, 5)
-                cf = random.randint(0, len(colors) - 1)
-                h = random.randint(1, 5)
-                w = random.randint(1, 5)
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                lw = secrets.SystemRandom().randint(1, 5)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                h = secrets.SystemRandom().randint(1, 5)
+                w = secrets.SystemRandom().randint(1, 5)
                 Canvas.AddEllipse(xy, (h, w), LineWidth=lw, FillColor=colors[cf])
 
             # Points
             for i in range(5):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                D = random.randint(1, 50)
-                cf = random.randint(0, len(colors) - 1)
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                D = secrets.SystemRandom().randint(1, 50)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddPoint(xy, Color=colors[cf], Diameter=D)
 
             # SquarePoints
             for i in range(500):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                S = random.randint(1, 50)
-                cf = random.randint(0, len(colors) - 1)
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                S = secrets.SystemRandom().randint(1, 50)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddSquarePoint(xy, Color=colors[cf], Size=S)
 
             # Circles
             for i in range(5):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                D = random.randint(1, 5)
-                lw = random.randint(1, 5)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                D = secrets.SystemRandom().randint(1, 5)
+                lw = secrets.SystemRandom().randint(1, 5)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddCircle(xy, D, LineWidth=lw, LineColor=colors[cl], FillColor=colors[cf])
                 Canvas.AddText(
                     "Circle # %i" % (i), xy, Size=12, BackgroundColor=None, Position="cc"
@@ -353,22 +355,22 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             # Lines
             for i in range(5):
                 points = []
-                for j in range(random.randint(2, 10)):
-                    point = (random.randint(Range[0], Range[1]), random.randint(Range[0], Range[1]))
+                for j in range(secrets.SystemRandom().randint(2, 10)):
+                    point = (secrets.SystemRandom().randint(Range[0], Range[1]), secrets.SystemRandom().randint(Range[0], Range[1]))
                     points.append(point)
-                lw = random.randint(1, 10)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
+                lw = secrets.SystemRandom().randint(1, 10)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddLine(points, LineWidth=lw, LineColor=colors[cl])
             # Polygons
             for i in range(3):
                 points = []
-                for j in range(random.randint(2, 6)):
-                    point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                for j in range(secrets.SystemRandom().randint(2, 6)):
+                    point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                     points.append(point)
-                lw = random.randint(1, 6)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
+                lw = secrets.SystemRandom().randint(1, 6)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddPolygon(
                     points,
                     LineWidth=lw,
@@ -381,24 +383,24 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             for i in range(4):
                 points = []
                 points = RandomArray.uniform(Range[0], Range[1], (100, 2))
-                cf = random.randint(0, len(colors) - 1)
-                D = random.randint(1, 4)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                D = secrets.SystemRandom().randint(1, 4)
                 Canvas.AddPointSet(points, Color=colors[cf], Diameter=D)
 
             # Text
             String = "Unscaled text"
             for i in range(3):
-                ts = random.randint(10, 40)
-                cf = random.randint(0, len(colors) - 1)
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                ts = secrets.SystemRandom().randint(10, 40)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                 Canvas.AddText(String, xy, Size=ts, Color=colors[cf], Position="cc")
 
             # Scaled Text
             String = "Scaled text"
             for i in range(3):
-                ts = random.random() * 3 + 0.2
-                cf = random.randint(0, len(colors) - 1)
-                Point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                ts = secrets.SystemRandom().random() * 3 + 0.2
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                Point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                 Canvas.AddScaledText(String, Point, Size=ts, Color=colors[cf], Position="cc")
 
             # Arrows
@@ -407,22 +409,22 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             for i in range(N):
                 Canvas.AddArrow(
                     Points[i],
-                    random.uniform(20, 100),
-                    Direction=random.uniform(0, 360),
-                    LineWidth=random.uniform(1, 5),
-                    LineColor=colors[random.randint(0, len(colors) - 1)],
-                    ArrowHeadAngle=random.uniform(20, 90),
+                    secrets.SystemRandom().uniform(20, 100),
+                    Direction=secrets.SystemRandom().uniform(0, 360),
+                    LineWidth=secrets.SystemRandom().uniform(1, 5),
+                    LineColor=colors[secrets.SystemRandom().randint(0, len(colors) - 1)],
+                    ArrowHeadAngle=secrets.SystemRandom().uniform(20, 90),
                 )
 
             # ArrowLines
             for i in range(5):
                 points = []
-                for j in range(random.randint(2, 10)):
-                    point = (random.randint(Range[0], Range[1]), random.randint(Range[0], Range[1]))
+                for j in range(secrets.SystemRandom().randint(2, 10)):
+                    point = (secrets.SystemRandom().randint(Range[0], Range[1]), secrets.SystemRandom().randint(Range[0], Range[1]))
                     points.append(point)
-                lw = random.randint(1, 10)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
+                lw = secrets.SystemRandom().randint(1, 10)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddArrowLine(points, LineWidth=lw, LineColor=colors[cl], ArrowHeadSize=16)
 
             Canvas.ZoomToBB()
@@ -449,27 +451,27 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             colors = self.colors
             # Rectangles
             for i in range(3):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                lw = random.randint(1, 5)
-                cf = random.randint(0, len(colors) - 1)
-                wh = (random.randint(1, 5), random.randint(1, 5))
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                lw = secrets.SystemRandom().randint(1, 5)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                wh = (secrets.SystemRandom().randint(1, 5), secrets.SystemRandom().randint(1, 5))
                 Canvas.AddRectangle(xy, wh, LineWidth=lw, FillColor=colors[cf])
 
             # Ellipses
             for i in range(3):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                lw = random.randint(1, 5)
-                cf = random.randint(0, len(colors) - 1)
-                wh = (random.randint(1, 5), random.randint(1, 5))
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                lw = secrets.SystemRandom().randint(1, 5)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                wh = (secrets.SystemRandom().randint(1, 5), secrets.SystemRandom().randint(1, 5))
                 Canvas.AddEllipse(xy, wh, LineWidth=lw, FillColor=colors[cf])
 
             # Circles
             for i in range(5):
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                D = random.randint(1, 5)
-                lw = random.randint(1, 5)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                D = secrets.SystemRandom().randint(1, 5)
+                lw = secrets.SystemRandom().randint(1, 5)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddCircle(xy, D, LineWidth=lw, LineColor=colors[cl], FillColor=colors[cf])
                 Canvas.AddText(
                     "Circle # %i" % (i), xy, Size=12, BackgroundColor=None, Position="cc"
@@ -478,23 +480,23 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             # Lines
             for i in range(5):
                 points = []
-                for j in range(random.randint(2, 10)):
-                    point = (random.randint(Range[0], Range[1]), random.randint(Range[0], Range[1]))
+                for j in range(secrets.SystemRandom().randint(2, 10)):
+                    point = (secrets.SystemRandom().randint(Range[0], Range[1]), secrets.SystemRandom().randint(Range[0], Range[1]))
                     points.append(point)
-                lw = random.randint(1, 10)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
+                lw = secrets.SystemRandom().randint(1, 10)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddLine(points, LineWidth=lw, LineColor=colors[cl])
 
             # Polygons
             for i in range(3):
                 points = []
-                for j in range(random.randint(2, 6)):
-                    point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                for j in range(secrets.SystemRandom().randint(2, 6)):
+                    point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                     points.append(point)
-                lw = random.randint(1, 6)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
+                lw = secrets.SystemRandom().randint(1, 6)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
                 Canvas.AddPolygon(
                     points,
                     LineWidth=lw,
@@ -506,9 +508,9 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             # Scaled Text
             String = "Scaled text"
             for i in range(3):
-                ts = random.random() * 3 + 0.2
-                cf = random.randint(0, len(colors) - 1)
-                xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                ts = secrets.SystemRandom().random() * 3 + 0.2
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                 Canvas.AddScaledText(String, xy, Size=ts, Color=colors[cf], Position="cc")
 
             # Now the Foreground Object:
@@ -546,8 +548,8 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
         def MoveMe(self, Object):
             self.MovingObject = Object
             Range = self.Range
-            self.dx = random.uniform(Range[0] / 4, Range[1] / 4)
-            self.dy = random.uniform(Range[0] / 4, Range[1] / 4)
+            self.dx = secrets.SystemRandom().uniform(Range[0] / 4, Range[1] / 4)
+            self.dy = secrets.SystemRandom().uniform(Range[0] / 4, Range[1] / 4)
             # import time
             # start = time.time()
             self.NumTimeSteps = 200
@@ -1431,14 +1433,14 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             linewidths = []
             for i in range(2000):
                 points = (
-                    random.randint(Range[0], Range[1]),
-                    random.randint(Range[0], Range[1]),
-                    random.randint(Range[0], Range[1]),
-                    random.randint(Range[0], Range[1]),
+                    secrets.SystemRandom().randint(Range[0], Range[1]),
+                    secrets.SystemRandom().randint(Range[0], Range[1]),
+                    secrets.SystemRandom().randint(Range[0], Range[1]),
+                    secrets.SystemRandom().randint(Range[0], Range[1]),
                 )
                 linepoints.append(points)
-                linewidths.append(random.randint(1, 10))
-                linecolors.append(random.randint(0, len(colors) - 1))
+                linewidths.append(secrets.SystemRandom().randint(1, 10))
+                linecolors.append(secrets.SystemRandom().randint(0, len(colors) - 1))
             for (points, color, width) in zip(linepoints, linecolors, linewidths):
                 Canvas.AddLine((points[0:2], points[2:4]), LineWidth=width, LineColor=colors[color])
             # print "It took %f seconds to add %i lines"%(time.clock() - start,len(linepoints) )
@@ -1458,14 +1460,14 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             # Lines
             for i in range(5):
                 points = []
-                for j in range(random.randint(2, 10)):
-                    point = (random.randint(Range[0], Range[1]), random.randint(Range[0], Range[1]))
+                for j in range(secrets.SystemRandom().randint(2, 10)):
+                    point = (secrets.SystemRandom().randint(Range[0], Range[1]), secrets.SystemRandom().randint(Range[0], Range[1]))
                     points.append(point)
-                lw = random.randint(1, 4)
-                cf = random.randint(0, len(colors) - 1)
-                cl = random.randint(0, len(colors) - 1)
-                al = random.randint(8, 20)
-                aa = random.randint(20, 90)
+                lw = secrets.SystemRandom().randint(1, 4)
+                cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+                cl = secrets.SystemRandom().randint(0, len(colors) - 1)
+                al = secrets.SystemRandom().randint(8, 20)
+                aa = secrets.SystemRandom().randint(20, 90)
                 Canvas.AddArrowLine(
                     points, LineWidth=lw, LineColor=colors[cl], ArrowHeadSize=al, ArrowHeadAngle=aa
                 )
@@ -1486,8 +1488,8 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             coords = []
             for i in range(1000):
                 Point = (
-                    random.uniform(BigRange[0], BigRange[1]),
-                    random.uniform(BigRange[0], BigRange[1]),
+                    secrets.SystemRandom().uniform(BigRange[0], BigRange[1]),
+                    secrets.SystemRandom().uniform(BigRange[0], BigRange[1]),
                 )
                 coords.append((Point))
             print("Drawing the Points")
@@ -1514,35 +1516,35 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             self.ColorObjectsText = []
             ##One of each object:
             # Rectangle
-            Point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-            lw = random.randint(1, 5)
-            cf = random.randint(0, len(colors) - 1)
-            wh = (random.randint(1, 5), random.randint(1, 5))
+            Point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+            lw = secrets.SystemRandom().randint(1, 5)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            wh = (secrets.SystemRandom().randint(1, 5), secrets.SystemRandom().randint(1, 5))
             self.Rectangle = Canvas.AddRectangle(Point, wh, LineWidth=lw, FillColor=colors[cf])
             self.ColorObjectsAll.append(self.Rectangle)
 
             # Ellipse
-            Point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-            lw = random.randint(1, 5)
-            cf = random.randint(0, len(colors) - 1)
-            wh = (random.randint(1, 5), random.randint(1, 5))
+            Point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+            lw = secrets.SystemRandom().randint(1, 5)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            wh = (secrets.SystemRandom().randint(1, 5), secrets.SystemRandom().randint(1, 5))
             self.Ellipse = Canvas.AddEllipse(Point, wh, LineWidth=lw, FillColor=colors[cf])
             self.ColorObjectsAll.append(self.Ellipse)
 
             # Point
-            xy = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-            D = random.randint(1, 50)
-            lw = random.randint(1, 5)
-            cf = random.randint(0, len(colors) - 1)
-            cl = random.randint(0, len(colors) - 1)
+            xy = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+            D = secrets.SystemRandom().randint(1, 50)
+            lw = secrets.SystemRandom().randint(1, 5)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            cl = secrets.SystemRandom().randint(0, len(colors) - 1)
             self.ColorObjectsColor.append(Canvas.AddPoint(xy, colors[cf], D))
 
             # Circle
-            Point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-            D = random.randint(1, 5)
-            lw = random.randint(1, 5)
-            cf = random.randint(0, len(colors) - 1)
-            cl = random.randint(0, len(colors) - 1)
+            Point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+            D = secrets.SystemRandom().randint(1, 5)
+            lw = secrets.SystemRandom().randint(1, 5)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            cl = secrets.SystemRandom().randint(0, len(colors) - 1)
             self.Circle = Canvas.AddCircle(
                 Point, D, LineWidth=lw, LineColor=colors[cl], FillColor=colors[cf]
             )
@@ -1550,12 +1552,12 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
 
             # Line
             points = []
-            for j in range(random.randint(2, 10)):
-                point = (random.randint(Range[0], Range[1]), random.randint(Range[0], Range[1]))
+            for j in range(secrets.SystemRandom().randint(2, 10)):
+                point = (secrets.SystemRandom().randint(Range[0], Range[1]), secrets.SystemRandom().randint(Range[0], Range[1]))
                 points.append(point)
-            lw = random.randint(1, 10)
-            cf = random.randint(0, len(colors) - 1)
-            cl = random.randint(0, len(colors) - 1)
+            lw = secrets.SystemRandom().randint(1, 10)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            cl = secrets.SystemRandom().randint(0, len(colors) - 1)
             self.ColorObjectsLine.append(Canvas.AddLine(points, LineWidth=lw, LineColor=colors[cl]))
 
             # Polygon
@@ -1564,9 +1566,9 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             ##                point = (random.uniform(Range[0],Range[1]),random.uniform(Range[0],Range[1]))
             ##                points.append(point)
             points = RandomArray.uniform(Range[0], Range[1], (6, 2))
-            lw = random.randint(1, 6)
-            cf = random.randint(0, len(colors) - 1)
-            cl = random.randint(0, len(colors) - 1)
+            lw = secrets.SystemRandom().randint(1, 6)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            cl = secrets.SystemRandom().randint(0, len(colors) - 1)
             self.ColorObjectsAll.append(
                 Canvas.AddPolygon(
                     points,
@@ -1579,32 +1581,32 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
 
             ## Pointset
             points = RandomArray.uniform(Range[0], Range[1], (100, 2))
-            cf = random.randint(0, len(colors) - 1)
-            D = random.randint(1, 4)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            D = secrets.SystemRandom().randint(1, 4)
             self.PointSet = Canvas.AddPointSet(points, Color=colors[cf], Diameter=D)
             self.ColorObjectsColor.append(self.PointSet)
 
             ## Point
             point = RandomArray.uniform(Range[0], Range[1], (2,))
-            cf = random.randint(0, len(colors) - 1)
-            D = random.randint(1, 4)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            D = secrets.SystemRandom().randint(1, 4)
             self.Point = Canvas.AddPoint(point, Color=colors[cf], Diameter=D)
             self.ColorObjectsColor.append(self.Point)
 
             # Text
             String = "Unscaled text"
-            ts = random.randint(10, 40)
-            cf = random.randint(0, len(colors) - 1)
-            Point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+            ts = secrets.SystemRandom().randint(10, 40)
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            Point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
             self.ColorObjectsText.append(
                 Canvas.AddText(String, Point, Size=ts, Color=colors[cf], Position="cc")
             )
 
             # Scaled Text
             String = "Scaled text"
-            ts = random.random() * 3 + 0.2
-            cf = random.randint(0, len(colors) - 1)
-            Point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+            ts = secrets.SystemRandom().random() * 3 + 0.2
+            cf = secrets.SystemRandom().randint(0, len(colors) - 1)
+            Point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
             self.ColorObjectsText.append(
                 Canvas.AddScaledText(String, Point, Size=ts, Color=colors[cf], Position="cc")
             )
@@ -1629,29 +1631,29 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
 
             for Object in self.ColorObjectsAll:
                 pass
-                Object.SetFillColor(colors[random.randint(0, len(colors) - 1)])
-                Object.SetLineColor(colors[random.randint(0, len(colors) - 1)])
-                Object.SetLineWidth(random.randint(1, 7))
+                Object.SetFillColor(colors[secrets.SystemRandom().randint(0, len(colors) - 1)])
+                Object.SetLineColor(colors[secrets.SystemRandom().randint(0, len(colors) - 1)])
+                Object.SetLineWidth(secrets.SystemRandom().randint(1, 7))
                 Object.SetLineStyle(
-                    list(FloatCanvas.DrawObject.LineStyleList.keys())[random.randint(0, 5)]
+                    list(FloatCanvas.DrawObject.LineStyleList.keys())[secrets.SystemRandom().randint(0, 5)]
                 )
             for Object in self.ColorObjectsLine:
-                Object.SetLineColor(colors[random.randint(0, len(colors) - 1)])
-                Object.SetLineWidth(random.randint(1, 7))
+                Object.SetLineColor(colors[secrets.SystemRandom().randint(0, len(colors) - 1)])
+                Object.SetLineWidth(secrets.SystemRandom().randint(1, 7))
                 Object.SetLineStyle(
-                    list(FloatCanvas.DrawObject.LineStyleList.keys())[random.randint(0, 5)]
+                    list(FloatCanvas.DrawObject.LineStyleList.keys())[secrets.SystemRandom().randint(0, 5)]
                 )
             for Object in self.ColorObjectsColor:
-                Object.SetColor(colors[random.randint(0, len(colors) - 1)])
+                Object.SetColor(colors[secrets.SystemRandom().randint(0, len(colors) - 1)])
             for Object in self.ColorObjectsText:
-                Object.SetColor(colors[random.randint(0, len(colors) - 1)])
-                Object.SetBackgroundColor(colors[random.randint(0, len(colors) - 1)])
-            self.Circle.SetDiameter(random.randint(1, 10))
-            self.PointSet.SetDiameter(random.randint(1, 8))
-            self.Point.SetDiameter(random.randint(1, 8))
+                Object.SetColor(colors[secrets.SystemRandom().randint(0, len(colors) - 1)])
+                Object.SetBackgroundColor(colors[secrets.SystemRandom().randint(0, len(colors) - 1)])
+            self.Circle.SetDiameter(secrets.SystemRandom().randint(1, 10))
+            self.PointSet.SetDiameter(secrets.SystemRandom().randint(1, 8))
+            self.Point.SetDiameter(secrets.SystemRandom().randint(1, 8))
             for Object in (self.Rectangle, self.Ellipse):
-                Point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
-                wh = (random.randint(1, 5), random.randint(1, 5))
+                Point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
+                wh = (secrets.SystemRandom().randint(1, 5), secrets.SystemRandom().randint(1, 5))
                 Object.SetShape(Point, wh)
             self.Canvas.Draw(Force=True)
 
@@ -1727,8 +1729,8 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             # self.RotArrow.SetDirection(self.RotArrow.Direction + random.uniform(-90,90))
             # self.RotArrow.SetLength(self.RotArrow.Length + random.randint(-20,20))
             self.RotArrow.SetLengthDirection(
-                self.RotArrow.Length + random.randint(-20, 20),
-                self.RotArrow.Direction + random.uniform(-90, 90),
+                self.RotArrow.Length + secrets.SystemRandom().randint(-20, 20),
+                self.RotArrow.Direction + secrets.SystemRandom().uniform(-90, 90),
             )
 
             self.Canvas.Draw(Force=True)
@@ -1745,7 +1747,7 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             # Create a couple random Polygons
             points = []
             for j in range(6):
-                point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                 points.append(point)
             Poly = Canvas.AddPolygon(
                 points, LineWidth=2, LineColor="Black", FillColor="LightBlue", FillStyle="Solid"
@@ -1753,7 +1755,7 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
 
             points = []
             for j in range(6):
-                point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                 points.append(point)
             Poly2 = Canvas.AddPolygon(
                 points,
@@ -1823,7 +1825,7 @@ def BuildDrawFrame():  # this gets called when needed, rather than on import
             # Create a random Polygon
             points = []
             for j in range(6):
-                point = (random.uniform(Range[0], Range[1]), random.uniform(Range[0], Range[1]))
+                point = (secrets.SystemRandom().uniform(Range[0], Range[1]), secrets.SystemRandom().uniform(Range[0], Range[1]))
                 points.append(point)
             Poly = Canvas.AddPolygon(
                 points, LineWidth=2, LineColor="Black", FillColor="LightBlue", FillStyle="Solid"

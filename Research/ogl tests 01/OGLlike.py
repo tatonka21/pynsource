@@ -16,7 +16,7 @@ import pickle
 import os
 import sys
 import copy
-import random
+import secrets
 
 # Global Stuff   -------------------------------------------------------------------------
 clipboard = []
@@ -1347,8 +1347,8 @@ class CodeFrame(Frame):
 
 
 def rand_bounds():
-    x = random.randint(20, 350)
-    y = random.randint(20, 150)
+    x = secrets.SystemRandom().randint(20, 350)
+    y = secrets.SystemRandom().randint(20, 150)
     x2 = x + 70
     y2 = y + 70
     return x, y, x2, y2
@@ -1368,7 +1368,7 @@ def rand_brush():
         CYAN_BRUSH,
         RED_BRUSH,
     ]
-    return random.choice(brushes)
+    return secrets.choice(brushes)
 
 
 from ast import literal_eval
