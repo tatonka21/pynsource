@@ -10,7 +10,7 @@ import sys
 
 # Use Python Standard Library
 fp = open("app_python_location.config")
-label, python_lib_path = fp.readline().strip().split("=")
+label, python_lib_path = fp.readline(5_000_000).strip().split("=")
 fp.close()
 sys.path.append(python_lib_path)  # e.g. "c:\python26\lib")
 # import os
