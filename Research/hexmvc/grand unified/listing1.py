@@ -6,7 +6,7 @@ def find_definition(word):
     url = 'http://api.duckduckgo.com/?'
     url += urlencode({'q': q, 'format': 'json'})
     print(url)
-    response = requests.get(url)     # I/O
+    response = requests.get(url, timeout=60)     # I/O
     print(response.status_code)
     data = response.json()           # I/O
     print(data)
