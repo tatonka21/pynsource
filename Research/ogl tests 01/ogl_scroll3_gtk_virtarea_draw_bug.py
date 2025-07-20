@@ -5,7 +5,7 @@ Simple ogl scrolling canvas to test redraw algorithms.
 import wx
 import wx.lib.ogl as ogl
 import os, stat
-import random
+import secrets
 
 WINDOW_SIZE = (1024, 768)
 
@@ -71,7 +71,7 @@ class UmlCanvas(ogl.ShapeCanvas):
         if keycode == "m":
             # print len(self.GetDiagram().GetShapeList())
 
-            shape = self.GetDiagram().GetShapeList()[random.randint(0, 17)]
+            shape = self.GetDiagram().GetShapeList()[secrets.SystemRandom().randint(0, 17)]
 
             dc = wx.ClientDC(self)
             self.PrepareDC(dc)
@@ -92,7 +92,7 @@ class UmlCanvas(ogl.ShapeCanvas):
             # y += height/2
             # shape.Move(dc, x, y)
 
-            x = random.randint(1, 600)
+            x = secrets.SystemRandom().randint(1, 600)
             y = shape.GetY()
             width, height = shape.GetBoundingBoxMax()
             x += width / 2

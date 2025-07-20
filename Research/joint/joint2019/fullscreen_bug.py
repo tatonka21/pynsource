@@ -2,7 +2,7 @@ import wx
 # import wx.lib.ogl as ogl
 import wx.html2 as webview
 import time
-import random
+import secrets
 
 class AppFrame(wx.Frame):
     def __init__(self):
@@ -100,10 +100,10 @@ def makeRandomRectangles(num, W, H):
     rects = []
 
     for i in range(num):
-        w = random.randint(10, int(W/2))
-        h = random.randint(10, int(H/2))
-        x = random.randint(0, W - w)
-        y = random.randint(0, H - h)
+        w = secrets.SystemRandom().randint(10, int(W/2))
+        h = secrets.SystemRandom().randint(10, int(H/2))
+        x = secrets.SystemRandom().randint(0, W - w)
+        y = secrets.SystemRandom().randint(0, H - h)
         rects.append( (x, y, w, h) )
 
     return rects

@@ -1,6 +1,6 @@
 import wx
-import random
 from .DialogUmlNodeEdit import DialogUmlNodeEdit
+import secrets
 
 
 class TestApp(wx.Frame):
@@ -16,7 +16,7 @@ class TestApp(wx.Frame):
         self.MAIN()
 
     def MAIN(self):
-        id = "D" + str(random.randint(1, 99))
+        id = "D" + str(secrets.SystemRandom().randint(1, 99))
         dialog = DialogUmlNodeEdit(None)
         dialog.txtClassName.Value = id
         dialog.txtAttrs.Value = "aa\nbb\nccc"

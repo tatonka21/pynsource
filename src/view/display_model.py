@@ -1,4 +1,3 @@
-import random
 import sys
 from .graph import Graph, GraphNode
 from base64 import b64encode
@@ -8,6 +7,7 @@ from base64 import b64decode
 from beautifultable import BeautifulTable
 from termcolor import colored  # also install colorama to make this work on windows
 from gui.coord_utils import getpos
+import secrets
 
 
 class UmlGraph(Graph):
@@ -376,10 +376,10 @@ class DisplayModel:
             self.merge_attrs_and_meths(node, attrs, meths)
             return node
         t, l, w, h = (
-            random.randint(0, 100),
-            random.randint(0, 100),
-            random.randint(60, 160),
-            random.randint(60, 160),
+            secrets.SystemRandom().randint(0, 100),
+            secrets.SystemRandom().randint(0, 100),
+            secrets.SystemRandom().randint(60, 160),
+            secrets.SystemRandom().randint(60, 160),
         )
         node = UmlNode(id, t, l, w, h, attrs=attrs, meths=meths)
         node = self.graph.AddNode(node)
@@ -393,10 +393,10 @@ class DisplayModel:
             self.merge_attrs_and_meths(node, attrs, meths)
             return node
         t, l, w, h = (
-            random.randint(0, 100),
-            random.randint(0, 100),
-            random.randint(60, 160),
-            random.randint(60, 160),
+            secrets.SystemRandom().randint(0, 100),
+            secrets.SystemRandom().randint(0, 100),
+            secrets.SystemRandom().randint(60, 160),
+            secrets.SystemRandom().randint(60, 160),
         )
         node = UmlModuleNode(id, t, l, w, h, attrs=attrs, meths=meths)
         node = self.graph.AddNode(node)
@@ -424,10 +424,10 @@ class DisplayModel:
         Returns: graph node
         """
         if self.graph.FindNodeById(id):
-            id += str(random.randint(1, 9999))
+            id += str(secrets.SystemRandom().randint(1, 9999))
         t, l, w, h = (
-            random.randint(0, 100),
-            random.randint(0, 100),
+            secrets.SystemRandom().randint(0, 100),
+            secrets.SystemRandom().randint(0, 100),
             200,  # random.randint(60, 160),
             100,  # random.randint(60, 160),
         )
@@ -459,12 +459,12 @@ class DisplayModel:
 
     def AddSimpleNode(self, id):
         if self.graph.FindNodeById(id):
-            id += str(random.randint(1, 9999))
+            id += str(secrets.SystemRandom().randint(1, 9999))
         t, l, w, h = (
-            random.randint(0, 100),
-            random.randint(0, 100),
-            random.randint(60, 160),
-            random.randint(60, 160),
+            secrets.SystemRandom().randint(0, 100),
+            secrets.SystemRandom().randint(0, 100),
+            secrets.SystemRandom().randint(60, 160),
+            secrets.SystemRandom().randint(60, 160),
         )
         node = GraphNode(id, t, l, w, h)
         node = self.graph.AddNode(node)

@@ -2,9 +2,10 @@
 # -*- coding: utf8 -*-
 # (c)www.stani.be, GPL licensed
 
-import sys, random
+import sys
 import wx
 import wx.stc as stc
+import secrets
 
 DEFAULT_ENCODING = "utf8"
 STC_LANGUAGES = [x[8:] for x in dir(stc) if x.startswith("STC_LEX_")]
@@ -17,7 +18,7 @@ def value2colour(c):
 
 
 def picasso():
-    c = random.randint(0, GRAY)
+    c = secrets.SystemRandom().randint(0, GRAY)
     return value2colour(c), value2colour((c + GRAY) % WHITE)
 
 

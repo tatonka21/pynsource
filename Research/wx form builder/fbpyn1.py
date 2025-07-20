@@ -4,6 +4,7 @@ import wx
 from fbpyn1_gen import FramePyIdea_gen
 import wx.lib.ogl as ogl
 import wx.stc as stc
+import secrets
 
 
 class Node:
@@ -31,16 +32,15 @@ class FramePyIdea(FramePyIdea_gen):
 
     def addpane(self, dofloat=False):
         from fbpyn1_scintilla import PythonSTC
-        from random import randint
 
         m_code2 = PythonSTC(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.WANTS_CHARS)
         if dofloat:
             self.m_mgr.AddPane(
                 m_code2,
                 wx.aui.AuiPaneInfo()
-                .Name("pane_code" + repr(randint(1, 1000)))
+                .Name("pane_code" + repr(secrets.SystemRandom().randint(1, 1000)))
                 .Right()
-                .Caption("Source Code" + repr(randint(1, 1000)))
+                .Caption("Source Code" + repr(secrets.SystemRandom().randint(1, 1000)))
                 .MaximizeButton(False)
                 .MinimizeButton(False)
                 .PinButton(True)
@@ -54,9 +54,9 @@ class FramePyIdea(FramePyIdea_gen):
             self.m_mgr.AddPane(
                 m_code2,
                 wx.aui.AuiPaneInfo()
-                .Name("pane_code" + repr(randint(1, 1000)))
+                .Name("pane_code" + repr(secrets.SystemRandom().randint(1, 1000)))
                 .Right()
-                .Caption("Source Code" + repr(randint(1, 1000)))
+                .Caption("Source Code" + repr(secrets.SystemRandom().randint(1, 1000)))
                 .MaximizeButton(False)
                 .MinimizeButton(False)
                 .PinButton(True)

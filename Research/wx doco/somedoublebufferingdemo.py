@@ -3,7 +3,7 @@
 #!/usr/bin/env python
 
 import wx
-import random
+import secrets
 
 # This has been set up to optionally use the wx.BufferedDC if
 # USE_BUFFERED_DC is True, it will be used. Otherwise, it uses the raw
@@ -188,20 +188,20 @@ class TestFrame(wx.Frame):
         # make some random rectangles
         l = []
         for i in range(5):
-            w = random.randint(1, MaxX / 2)
-            h = random.randint(1, MaxY / 2)
-            x = random.randint(1, MaxX - w)
-            y = random.randint(1, MaxY - h)
+            w = secrets.SystemRandom().randint(1, MaxX / 2)
+            h = secrets.SystemRandom().randint(1, MaxY / 2)
+            x = secrets.SystemRandom().randint(1, MaxX - w)
+            y = secrets.SystemRandom().randint(1, MaxY - h)
             l.append((x, y, w, h))
         DrawData["Rectangles"] = l
 
         # make some random ellipses
         l = []
         for i in range(5):
-            w = random.randint(1, MaxX / 2)
-            h = random.randint(1, MaxY / 2)
-            x = random.randint(1, MaxX - w)
-            y = random.randint(1, MaxY - h)
+            w = secrets.SystemRandom().randint(1, MaxX / 2)
+            h = secrets.SystemRandom().randint(1, MaxY / 2)
+            x = secrets.SystemRandom().randint(1, MaxX - w)
+            y = secrets.SystemRandom().randint(1, MaxY - h)
             l.append((x, y, w, h))
         DrawData["Ellipses"] = l
 
@@ -209,8 +209,8 @@ class TestFrame(wx.Frame):
         l = []
         for i in range(3):
             points = []
-            for j in range(random.randint(3, 8)):
-                point = (random.randint(1, MaxX), random.randint(1, MaxY))
+            for j in range(secrets.SystemRandom().randint(3, 8)):
+                point = (secrets.SystemRandom().randint(1, MaxX), secrets.SystemRandom().randint(1, MaxY))
                 points.append(point)
             l.append(points)
         DrawData["Polygons"] = l
