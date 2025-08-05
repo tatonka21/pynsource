@@ -13,6 +13,7 @@ import re
 import copy
 
 import scipy.io as sio
+from security import safe_command
 
 command = r"C:/Program Files/Plexim/PLECS 4.2 (64 bit)/plecs.exe"
 command = r"C:/Program Files/Plexim/PLECS 4.3 (64 bit)/plecs.exe"
@@ -104,7 +105,7 @@ class PlecsApp:
     #    @staticmethod
     def open_plecs(self):
         try:
-            pid = subprocess.Popen([command], creationflags=psutil.ABOVE_NORMAL_PRIORITY_CLASS).pid
+            pid = safe_command.run(subprocess.Popen, [command], creationflags=psutil.ABOVE_NORMAL_PRIORITY_CLASS).pid
         except Exception:
             print('Plecs opening problem')
 	#return pid
